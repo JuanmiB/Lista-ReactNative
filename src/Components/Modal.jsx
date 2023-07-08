@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
     buttonContainer: {
         flexDirection: "row",
         alignItems: "center",
+        gap: 5
     },
     button: {
         borderRadius: 20,
