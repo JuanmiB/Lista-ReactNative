@@ -4,7 +4,8 @@ import React from 'react'
 const Modals = ({
     modalVisible,
     setModalVisible,
-    taskActive
+    taskActive,
+    onPressStatus
 }) => {
     return (
         <Modal
@@ -22,7 +23,8 @@ const Modals = ({
 
                         <Pressable
                             style={[styles.button, styles.buttonDone]}
-                            onPress={() => setModalVisible(!modalVisible)}>
+                            onPress={() =>  onPressStatus(true)}>
+                                
                             <Text style={styles.textStyle}>
                                 Done</Text>
                         </Pressable>
@@ -36,7 +38,7 @@ const Modals = ({
 
                         <Pressable
                             style={[styles.button, styles.buttonNotYet]}
-                            onPress={() => setModalVisible(!modalVisible)}>
+                            onPress={() => onPressStatus(false)}>
                             <Text style={styles.textStyle}>
                                 Not yet</Text>
                         </Pressable>
@@ -52,19 +54,18 @@ export default Modals
 const styles = StyleSheet.create({
     centeredView: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: "center",
+        alignItems: "center",
         marginTop: 22,
     },
     modalView: {
         margin: 20,
-        backgroundColor: 'white',
+        backgroundColor: "white",
         borderRadius: 20,
         padding: 35,
-        alignItems: 'center',
-        shadowColor: '#000',
-        shadowOffset:
-        {
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
             width: 0,
             height: 2,
         },
@@ -74,27 +75,31 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         flexDirection: "row",
-        alignItems: "center"
+        alignItems: "center",
     },
-    buttonOpen: {
-        backgroundColor: '#F194FF',
+    button: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2,
     },
     buttonClose: {
-        backgroundColor: '#2196F3',
+        backgroundColor: "#F194FF",
+    },
+    buttonDone: {
+        backgroundColor: "green",
+    },
+
+    buttonNotYet: {
+        backgroundColor: "red",
     },
     textStyle: {
-        color: 'white',
-        fontWeight: 'bold',
-        textAlign: 'center',
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center",
+        
     },
     modalText: {
         marginBottom: 15,
-        textAlign: 'center',
+        textAlign: "center",
     },
-    buttonDone: {
-        backgroundColor: "green"
-    },
-    buttonNotYet: {
-        backgroundColor: "red"
-    }
-})
+});
